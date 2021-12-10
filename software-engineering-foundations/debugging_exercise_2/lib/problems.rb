@@ -63,3 +63,35 @@ def dupe_indices(arr)
     end
     dupe_indices
 end
+
+def array_bubble_sort!(arr)
+    sorted = false
+
+    (0...arr.length - 1).each do |i|
+        sorted = true
+        if arr[i] > arr[i+1]
+            arr[i], arr[i+1] = arr[i+1], arr[i]
+            sorted = false
+        end
+    end
+    arr
+end
+
+def ana_array(arr1, arr2)
+    hash1 = hash_from_array(arr1)
+    hash2 = hash_from_array(arr2)
+
+    if hash1 == hash2
+        return true
+    else
+        return false
+    end
+end
+
+def hash_from_array(arr)
+    hash = Hash.new(0)
+    arr.each do |ele|
+        hash[ele] += 1
+    end
+    hash
+end
