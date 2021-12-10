@@ -40,6 +40,8 @@ def unique_chars?(str)
     return true
 end
 
+# Returns a hash with the index of all 
+# strings/char in the array that are duplicates 
 def dupe_indices(arr)
     char_hash = Hash.new(0)
     arr.each do |ele|
