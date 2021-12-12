@@ -7,7 +7,6 @@ end
 def word_changer(str, &prc)
     array = str.split
     new_array = []
-    new_string = ""
     array.each do |word|
         new_array << prc.call(word)
     end
