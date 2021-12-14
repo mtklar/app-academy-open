@@ -59,13 +59,7 @@ class Code
     return count
   end
 
-  # RGRB
-  # RGBB
 
-  # R 0
-  # G 0
-  # B 1
-  #
   def num_near_matches(code_instance)
     count = 0
     pegs_dupe = @pegs.dup
@@ -93,9 +87,7 @@ class Code
       end
     end
 
-
     count
-
   end
 
   # # RGRB
