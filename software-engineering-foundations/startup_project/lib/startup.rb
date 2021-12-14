@@ -66,10 +66,13 @@ class Startup
         @funding = 0
     end
 
-    # Stuck on this
     def acquire(other_startup)
         @funding += other_startup.funding
-        @salaries.merge(other_startup.salaries)
+        # This feels like a messy way to do this and I couldn't figure out a lower
+        # level way to do it
+        @salaries = other_startup.salaries.merge(@salaries)
+        other_startup.employees.each { |ele| @employees << ele }
+        other_startup.close
     end
 
 end
