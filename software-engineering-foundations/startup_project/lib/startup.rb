@@ -71,6 +71,15 @@ class Startup
         # This feels like a messy way to do this and I couldn't figure out a lower
         # level way to do it
         @salaries = other_startup.salaries.merge(@salaries)
+        # This is the way they did it in the course, and they way I wanted
+        # To do it 
+        #
+        # other_startup.salaries.each do |title, amount|
+        #     if !@salaries.hash_key?(title)
+        #         @salaries[title] = amount
+        #     end
+        # end
+
         other_startup.employees.each { |ele| @employees << ele }
         other_startup.close
     end
