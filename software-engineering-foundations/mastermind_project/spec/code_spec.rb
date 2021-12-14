@@ -126,6 +126,7 @@ describe "Code" do
 
       # code == RGRB
       it "should return the number of pegs in the guess that are the correct color and position as @pegs" do
+        expect(code.num_exact_matches(Code.new(["R", "G", "B", "B"]))).to eq(3)
         expect(code.num_exact_matches(Code.new(["R", "R", "Y", "B"]))).to eq(2)
         expect(code.num_exact_matches(Code.new(["Y", "B", "Y", "B"]))).to eq(1)
         expect(code.num_exact_matches(Code.new(["Y", "Y", "Y", "Y"]))).to eq(0)
