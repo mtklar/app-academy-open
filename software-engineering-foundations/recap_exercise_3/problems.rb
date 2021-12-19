@@ -140,7 +140,62 @@ def vowel_rotate(str)
     end
 
     new_word
+end
+
+class String
+
+    def select(&prc)
+        return "" if prc.nil?
+
+        new_string = ""
+
+        self.each_char do |char|
+            if prc.call(char)
+                new_string += char
+            end
+        end
+        return new_string
+    end
+
+    def map!(&prc)
+        self.each_char.with_index do |char, i|
+            self[i] = prc.call(char, i)
+        end
+    end
 
 end
 
-p vowel_rotate("oranges")
+
+# Had to look at the solutions for the remaining.
+# Really struggling with recursion
+def multiply(num, num2)
+    if num2 == 0
+        return 0
+    elsif num2 < 0
+        return -(num - multiply(num, num2 + 1))
+    else
+        return num + multiply(num, num2 - 1)
+    end
+end
+
+def lucas_sequence(num)
+    return [] if length == 0
+    return [2] if length == 1
+    return [2, 1] if length == 2
+
+    seq = lucas_sequence(length-1)
+    next_el = seq[-1] + seq[-2]
+    seq << next_el
+    seq
+end
+
+def prime_factorization(num)
+    (2..num).each do |fact|
+        if num % fact == 0
+            other_fact = num / fact
+            return [ *prime_factorization(fact), *prime_factorization(other_fact) ]
+        end
+    end
+
+    [ num ]
+end
