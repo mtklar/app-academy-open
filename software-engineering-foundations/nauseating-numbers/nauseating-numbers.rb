@@ -140,6 +140,7 @@ def matrix_addition_reloaded(*args)
     new_array
 end
 
+# Check if all elements in a row or column match
 def squarocol?(arr)
     # Check if row is the same
     arr.each do |row|
@@ -148,55 +149,46 @@ def squarocol?(arr)
         end
     end
 
-    rotated = arr.dup
+    # rotate the entire array so that each row is now a column
+    cols = []
     (0...arr.length).each do |i|
+        temp_array = []
         (0...arr[i].length).each do |j|
-            rotated[i][j] = arr[j][i]
+            temp_array << arr[j][i]
         end
+        cols << temp_array
     end
 
-    p arr
-    p rotated
-
     # Check if row is the same, but since we rotated the array these are basically the columns
-    rotated.each do |row|
+    cols.each do |row|
         if row.all? { |ele| ele == row[0] } 
             return true
         end
     end
 
     return false
+end
+
+# Check if all elements on the diagonals of a 2d array match
+def squaragonal?(arr)
+    new_array = []
+    new_array2 = []
+
+    # Put both diagonals into their own arrays
+    (0...arr.length).each do |i|
+        new_array << arr[i][i]
+        new_array2 << arr[i][(arr.length - 1) - i]
+    end
+    
+    # Check if either of the diagonals have full matching elements
+    if (new_array.all? { |ele| ele == new_array[0] }) || (new_array2.all? { |ele| ele == new_array2[0] })
+        return true
+    else
+        return false
+    end
+end
+
+def pascals_triangle(n)
 
 end
 
-p squarocol?([
-    [:a, :x , :d],
-    [:b, :x , :e],
-    [:c, :x , :f],
-]) # true
-
-p squarocol?([
-    [:x, :y, :x],
-    [:x, :z, :x],
-    [:o, :o, :o],
-]) # true
-
-p squarocol?([
-    [:o, :x , :o],
-    [:x, :o , :x],
-    [:o, :x , :o],
-]) # false
-
-p squarocol?([
-    [1, 2, 2, 7],
-    [1, 6, 6, 7],
-    [0, 5, 2, 7],
-    [4, 2, 9, 7],
-]) # true
-
-p squarocol?([
-    [1, 2, 2, 7],
-    [1, 6, 6, 0],
-    [0, 5, 2, 7],
-    [4, 2, 9, 7],
-]) # false
