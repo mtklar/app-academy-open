@@ -118,8 +118,8 @@ def matrix_addition_reloaded(*args)
 
     new_mat = args[0].dup
 
-    (0...new_mat.length).each do |i|
-        (0...new_mat[i].length).each do |j|
+    (0...args.length).each do |i|
+        (0...args[i].length).each do |j|
             new_mat[i][j] = mat_a[i][j] + mat_b[i][j]
         end
     end
