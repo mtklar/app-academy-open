@@ -118,9 +118,27 @@ def matrix_addition_reloaded(*args)
 
     new_mat = args[0].dup
 
+    # args.each do |arg|
+    #     arg.each do |ele|
+    #         ele.each do |digit|
+    #             p digit
+    #         end
+    #     end
+    # end
+
     (0...args.length).each do |i|
         (0...args[i].length).each do |j|
-            new_mat[i][j] = mat_a[i][j] + mat_b[i][j]
+            (0...args[i][j].length).each do |k|
+                new_mat[j][k] = 0
+            end
+        end
+    end
+
+    (0...args.length).each do |i|
+        (0...args[i].length).each do |j|
+            (0...args[i][j].length).each do |k|
+                new_mat[j][k] += args[i][j][k]
+            end
         end
     end
 
