@@ -70,7 +70,7 @@ def matrix_addition(mat_a, mat_b)
     new_mat = mat_a.dup
 
     (0...new_mat.length).each do |i|
-        (0...new_mat.length).each do |j|
+        (0...new_mat[i].length).each do |j|
             new_mat[i][j] = mat_a[i][j] + mat_b[i][j]
         end
     end
@@ -78,12 +78,65 @@ def matrix_addition(mat_a, mat_b)
     new_mat
 end 
 
+def mutual_factors(*args)
+    factors_array = []
+    new_array = []
+
+    args.each do |ele|
+        (1..ele).each do |i|
+            factors_array << i if ele % i == 0
+        end
+    end
+
+    (0...factors_array.length).each do |i|
+        count = 1
+        (i + 1...factors_array.length).each do |j|
+            count += 1 if factors_array[i] == factors_array[j]
+        end
+        new_array << factors_array[i] if count == args.length
+    end
+
+    new_array
+end
+
+# its just that easy
+def tribonacci_number(num)
+    trib = [1, 1, 2]
+
+    (3...num).each do |i|
+        trib << (trib[i - 3] + trib[i - 2] + trib[i - 1])
+    end
+
+    trib[num - 1]
+end
+
+def matrix_addition_reloaded(*args)
+    length = args[0].length
+    args.each do |arg|
+        return nil if arg.length != length
+    end
+
+    new_mat = args[0].dup
+
+    (0...new_mat.length).each do |i|
+        (0...new_mat[i].length).each do |j|
+            new_mat[i][j] = mat_a[i][j] + mat_b[i][j]
+        end
+    end
+
+    new_mat
+
+end
+
 matrix_a = [[2,5], [4,7]]
 matrix_b = [[9,1], [3,0]]
 matrix_c = [[-1,0], [0,-1]]
 matrix_d = [[2, -5], [7, 10], [0, 1]]
 matrix_e = [[0 , 0], [12, 4], [6,  3]]
-p matrix_addition(matrix_a, matrix_b) # [[11, 6], [7, 7]]
-p matrix_addition(matrix_a, matrix_c) # [[1, 5], [4, 6]]
-p matrix_addition(matrix_b, matrix_c) # [[8, 1], [3, -1]]
-p matrix_addition(matrix_d, matrix_e) # [[2, -5], [19, 14], [6, 4]]
+
+p matrix_addition_reloaded(matrix_a, matrix_b)              # [[11, 6], [7, 7]]
+p matrix_addition_reloaded(matrix_a, matrix_b, matrix_c)    # [[10, 6], [7, 6]]
+p matrix_addition_reloaded(matrix_e)                        # [[0, 0], [12, 4], [6, 3]]
+p matrix_addition_reloaded(matrix_d, matrix_e)              # [[2, -5], [19, 14], [6, 4]]
+p matrix_addition_reloaded(matrix_a, matrix_b, matrix_e)    # nil
+p matrix_addition_reloaded(matrix_d, matrix_e, matrix_c)    # nil
