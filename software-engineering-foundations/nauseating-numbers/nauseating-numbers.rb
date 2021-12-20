@@ -110,51 +110,93 @@ def tribonacci_number(num)
     trib[num - 1]
 end
 
+# definitely not the prettiest way to do this, for some reason
+# converting it to a hash helped me visualize the 3d array
+# better
 def matrix_addition_reloaded(*args)
     length = args[0].length
     args.each do |arg|
         return nil if arg.length != length
     end
 
-    new_mat = args[0].dup
+    hash = {}
 
-    # args.each do |arg|
-    #     arg.each do |ele|
-    #         ele.each do |digit|
-    #             p digit
-    #         end
-    #     end
-    # end
+    count = 0
+    args.each do |ele|
+        hash[count] = ele
+        count += 1
+    end
 
-    (0...args.length).each do |i|
-        (0...args[i].length).each do |j|
-            (0...args[i][j].length).each do |k|
-                new_mat[j][k] = 0
+    new_array = hash[0]
+    hash.delete(0)
+    hash.each do |k,v|
+        v.each.with_index do |ele, i|
+            ele.each.with_index do |dig, j|
+                new_array[i][j] += dig
             end
         end
     end
 
-    (0...args.length).each do |i|
-        (0...args[i].length).each do |j|
-            (0...args[i][j].length).each do |k|
-                new_mat[j][k] += args[i][j][k]
-            end
+    new_array
+end
+
+def squarocol?(arr)
+    # Check if row is the same
+    arr.each do |row|
+        if row.all? { |ele| ele == row[0] } 
+            return true
         end
     end
 
-    new_mat
+    rotated = arr.dup
+    (0...arr.length).each do |i|
+        (0...arr[i].length).each do |j|
+            rotated[i][j] = arr[j][i]
+        end
+    end
+
+    p arr
+    p rotated
+
+    # Check if row is the same, but since we rotated the array these are basically the columns
+    rotated.each do |row|
+        if row.all? { |ele| ele == row[0] } 
+            return true
+        end
+    end
+
+    return false
 
 end
 
-matrix_a = [[2,5], [4,7]]
-matrix_b = [[9,1], [3,0]]
-matrix_c = [[-1,0], [0,-1]]
-matrix_d = [[2, -5], [7, 10], [0, 1]]
-matrix_e = [[0 , 0], [12, 4], [6,  3]]
+p squarocol?([
+    [:a, :x , :d],
+    [:b, :x , :e],
+    [:c, :x , :f],
+]) # true
 
-p matrix_addition_reloaded(matrix_a, matrix_b)              # [[11, 6], [7, 7]]
-p matrix_addition_reloaded(matrix_a, matrix_b, matrix_c)    # [[10, 6], [7, 6]]
-p matrix_addition_reloaded(matrix_e)                        # [[0, 0], [12, 4], [6, 3]]
-p matrix_addition_reloaded(matrix_d, matrix_e)              # [[2, -5], [19, 14], [6, 4]]
-p matrix_addition_reloaded(matrix_a, matrix_b, matrix_e)    # nil
-p matrix_addition_reloaded(matrix_d, matrix_e, matrix_c)    # nil
+p squarocol?([
+    [:x, :y, :x],
+    [:x, :z, :x],
+    [:o, :o, :o],
+]) # true
+
+p squarocol?([
+    [:o, :x , :o],
+    [:x, :o , :x],
+    [:o, :x , :o],
+]) # false
+
+p squarocol?([
+    [1, 2, 2, 7],
+    [1, 6, 6, 7],
+    [0, 5, 2, 7],
+    [4, 2, 9, 7],
+]) # true
+
+p squarocol?([
+    [1, 2, 2, 7],
+    [1, 6, 6, 0],
+    [0, 5, 2, 7],
+    [4, 2, 9, 7],
+]) # false
