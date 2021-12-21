@@ -189,6 +189,28 @@ def squaragonal?(arr)
 end
 
 def pascals_triangle(n)
+    triangle = [[1], [1, 1]]
 
+    # Loop for the rows, starting at 2 since i hardcoded the base case
+    (2...n).each do |i|
+        temp_array = []
+        # loop for each column. +1 based on last row length so it keeps growing
+        (0...triangle.last.length + 1).each do |j|
+            # check 1st edge case, so we don't index outside of the array
+            if j == 0
+                temp_array << triangle[i-1][j]
+            # check last edge
+            elsif 
+                j == triangle.last.length
+                temp_array << triangle[i-1][j-1]
+            # fill in the middle
+            else
+                temp_array << triangle[i-1][j-1] + triangle[i-1][j]
+            end
+        end
+        triangle << temp_array
+    end
+
+    triangle
 end
 
