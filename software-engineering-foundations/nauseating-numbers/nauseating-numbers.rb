@@ -1,5 +1,7 @@
 require "byebug"
 
+# Problems can be found here: https://open.appacademy.io/learn/full-stack-online/software-engineering-foundations/nauseating-numbers
+
 def strange_sums(arr)
     count = 0
 
