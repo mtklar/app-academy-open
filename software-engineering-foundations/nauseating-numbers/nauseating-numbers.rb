@@ -284,6 +284,7 @@ def prime_array(n)
     new_array
 end
 
+# The most inefficient code you've ever seen. But hey, it works!
 def pretentious_primes(arr, n)
     p_array = prime_array(500)
     new_array = []
