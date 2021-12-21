@@ -1,3 +1,5 @@
+require "byebug"
+
 def strange_sums(arr)
     count = 0
 
@@ -214,3 +216,109 @@ def pascals_triangle(n)
     triangle
 end
 
+def triangular_word?(word)
+    alpha = ("a".."z").to_a 
+    word_sum = 0
+    triangle_numbers = triangular_numbers
+
+    word.each_char do |char|
+        word_sum += alpha.index(char) + 1
+    end
+
+    if triangle_numbers.include?(word_sum)
+        return true
+    else
+        return false
+    end
+end
+
+def triangular_numbers
+    new_array = []
+
+    (1..20).each do |i|
+        new_array << (i * (i + 1)) / 2
+    end
+
+    new_array
+end
+
+# Proud of this one too
+def consecutive_collapse(arr)
+    collapsed = false
+
+    while !collapsed
+        collapsed = true
+
+        (0...arr.length - 1).each do |i|
+            #debugger
+            if arr[i] == (arr[i+1] + 1) || arr[i] == (arr[i+1] - 1)
+                arr.delete_at(i)
+                arr.delete_at(i)
+                collapsed = false
+                break
+            end
+        end
+    end
+
+    arr
+end
+
+
+
+# Create a prime array up to n number
+def prime_array(n)
+    new_array = []
+
+    (2..n).each do |i|
+        prime = true
+        (2..i-1).each do |j|
+            if i % j == 0
+                prime = false
+            end
+        end
+        if prime
+            new_array << i
+        end
+    end
+
+    new_array
+end
+
+def pretentious_primes(arr, n)
+    p_array = prime_array(500)
+    new_array = []
+    temp_ele_array = prime_array(500)
+
+    arr.each do |ele|
+        if p_array.index(ele)
+            p_index = p_array.index(ele)
+            if p_index + n < 0
+                new_array << nil
+            else
+            new_array << p_array[p_index + n]
+            end
+        else
+            temp_ele_array = prime_array(500)
+            temp_ele_array << ele
+            temp_ele_array.sort!
+            p_index = temp_ele_array.index(ele)
+            if p_index + n < 0
+                new_array << nil
+            else
+                new_array << temp_ele_array[p_index + n]
+            end
+        end
+    end
+
+    new_array
+end
+
+p pretentious_primes([4, 15, 7], 1)           # [5, 17, 11]
+p pretentious_primes([4, 15, 7], 2)           # [7, 19, 13]
+p pretentious_primes([12, 11, 14, 15, 7], 1)  # [13, 13, 17, 17, 11]
+p pretentious_primes([12, 11, 14, 15, 7], 3)  # [19, 19, 23, 23, 17]
+p pretentious_primes([4, 15, 7], -1)          # [3, 13, 5]p pretentious_primes([4, 15, 7], -2)          # [2, 11, 3]
+p pretentious_primes([2, 11, 21], -1)         # [nil, 7, 19]
+p pretentious_primes([32, 5, 11], -3)         # [23, nil, 3]
+p pretentious_primes([32, 5, 11], -4)         # [19, nil, 2]
+p pretentious_primes([32, 5, 11], -5)         # [17, nil, nil]
