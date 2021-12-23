@@ -34,4 +34,9 @@ class Board
         end
     end
 
+    def printboard
+        @grid.each do |row|
+            print row, "\n"
+        end
+    end
 end
