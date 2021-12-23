@@ -284,6 +284,7 @@ end
 #     starts_a
 # ) # ["ace", "dog", "apple", "teeming", "boot"]
 
+# Another super janky function...
 def alternating_vowel(sentence)
     vowels = "aeiou"
     switch = false
@@ -291,20 +292,90 @@ def alternating_vowel(sentence)
     new_sentence = []
 
     split.each do |word|
-        temp_word = word
-        if switch
+        temp_word = ""
+        count = 0
+        if !switch
             (0...word.length).each do |i|
-                if vowels.include(word[i])
-                    temp_word[i] = "?"
-                    puts temp_word
+                if vowels.include?(word[i]) && count == 0
+                    count += 1
+                else
+                    temp_word += word[i]
                 end
             end
+            switch = !switch
+        elsif switch
+            (0...word.length).reverse_each do |i|
+                if vowels.include?(word[i]) && count == 0
+                    count += 1
+                else
+                    temp_word += word[i]
+                end
+            end
+            switch = !switch
+            temp_word.reverse!
         end
+        new_sentence << temp_word
     end
+
+    new_sentence.join(" ")
 
 end
 
-p alternating_vowel('panthers are great animals') # "pnthers ar grat animls"
-p alternating_vowel('running panthers are epic') # "rnning panthrs re epc"
-p alternating_vowel('code properly please') # "cde proprly plase"
-p alternating_vowel('my forecast predicts rain today') # "my forecst prdicts ran tday"
+# p alternating_vowel('panthers are great animals') # "pnthers ar grat animls"
+# p alternating_vowel('running panthers are epic') # "rnning panthrs re epc"
+# p alternating_vowel('code properly please') # "cde proprly plase"
+# p alternating_vowel('my forecast predicts rain today') # "my forecst prdicts ran tday"
+
+def silly_talk(sentence)
+    vowels = "aeiou"
+    split = sentence.split
+    new_array = []
+
+    split.each do |word|
+        temp_word = ""
+        if vowels.include?(word[-1])
+            new_array << word + word[-1]
+        else
+            (0...word.length).each do |i|
+                if vowels.include?(word[i])
+                    temp_word += word[i] + "b" + word[i]
+                else
+                    temp_word += word[i]
+                end
+            end
+            new_array << temp_word
+        end
+    end
+
+    new_array.join(" ")
+end
+
+# p silly_talk('Kids like cats and dogs') # "Kibids likee cabats aband dobogs"
+# p silly_talk('Stop that scooter') # "Stobop thabat scobooboteber"
+# p silly_talk('They can code') # "Thebey caban codee"
+# p silly_talk('He flew to Italy') # "Hee flebew too Ibitabaly"
+
+# I like this solution but I think it breaks in another languages due
+# to accessing an array index which doesn't exist
+def compress(string)
+    new_string = ""
+    count = 1
+
+    (0...string.length).each do |i|
+        if string[i] == string[i+1]
+            count += 1
+        else
+            new_string += string[i]
+            if count > 1
+                new_string += count.to_s
+            end
+            count = 1
+        end
+    end
+
+    new_string
+end
+
+p compress('aabbbbc')   # "a2b4c"
+p compress('boot')      # "bo2t"
+p compress('xxxyxxzzzz')# "x3yx2z4"
