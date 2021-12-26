@@ -40,9 +40,3 @@ class Item
 
 end
 
-
-Item.new(
-    'Fix checkout page',
-    '10-25-2019',
-    'The font is too small.'
-) # raises error due to invalid date
