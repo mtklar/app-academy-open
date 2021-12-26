@@ -81,13 +81,36 @@ class List
         print_full_item(0)
     end 
 
+    def up(index, amount=1)
+        if !valid_index?(index)
+            raise "Invalid index"
+            return false
+        end
+        
+        (0...amount).each do |i|
+            if index > 0
+            @items[index], @items[index - 1] = @items[index - 1], @items[index]
+            index -= 1
+            end
+        end
+    end
+
+    def down(index, amount=1)
+        if !valid_index?(index)
+            raise "Invalid index"
+            return false
+        end
+        
+        (0...amount).each do |i|
+            if index < @items.length - 1
+            @items[index], @items[index + 1] = @items[index + 1], @items[index]
+            index += 1
+            end
+        end
+    end
+
+    def sort_by_date!
+        @items.sort_by! { |item| item.deadline }
+    end
+
 end
-
-my_list = List.new("GROCERIES")
-
-my_list.add_item('toothpaste', '2019-10-25')
-my_list.add_item('shampoo', '2019-10-24')
-my_list.add_item('candy', '2019-10-31', '4 bags should be enough')
-
-my_list.print
-my_list.print_full_item(0)
