@@ -29,6 +29,18 @@ class Game
         @currentPlayer = @players[0]
     end
 
+    def guess
+        puts "#{@currentPlayer.name} enter a letter to extend the word:"
+        response = gets.chomp
+        while !validPlay?(@fragment + response)
+            puts
+            puts "Your letter didn't create a valid word, try again: "
+            response = gets.chomp
+        end
+        puts
+        return response
+    end
+
     def validPlay?(string)
         @dictionary.any? { |word| word.include?(string) }
     end
@@ -47,33 +59,47 @@ class Game
         @previousPlayer = @players[playerIndex]
     end
 
+    def printPoints
+        puts "".ljust(20, "-")
+        puts "Current Standings:"
+        standings = @players.clone
+        standings.sort_by { |player| player.losses}
+        standings.each do |player|
+            puts "#{player.name}: #{player.printGhost}"
+        end 
+        puts "".ljust(20, "-")
+    end 
+
     def playRound
-        puts "#{@currentPlayer.name} enter a letter to extend the word:"
-        response = gets.chomp
-        while !validPlay?(@fragment + response)
-            puts "Your letter didn't create a valid word, try again: "
-            response = gets.chomp
-        end
-        puts 
-        @fragment += response
-        puts "Current word fragment is: #{@fragment}"
+        @fragment += guess
+        puts "Current word fragment is: #{@fragment.capitalize}"
         if @dictionary.include?(@fragment)
-            puts "#{@currentPlayer.name} you created a real word and you lose!"
+            puts "#{@currentPlayer.name} you created a full word and you lose 1 point!"
+            @currentPlayer.addLossPoint
+            if @currentPlayer.lost?
+                puts "#{@currentPlayer.name} you are a GHOST! And have been eliminated."
+                @players.delete(@currentPlayer)
+            end
+            puts
+            printPoints
             @fragment = ""
+            return true
         end
         nextPlayer!
+        return false
+    end
+
+    def run
+        self.getPlayers
+        while @players.length > 1
+            self.playRound
+        end
+        puts
+        puts "#{@players[0]} CONGRATULATIONS, YOU WON!"
     end
 
 end
 
 
 g = Game.new
-g.getPlayers
-
-g.playRound
-g.playRound
-g.playRound
-g.playRound
-g.playRound
-g.playRound
-g.playRound
+g.run

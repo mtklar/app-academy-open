@@ -1,21 +1,32 @@
 class Player 
 
-    attr_reader :name
+    attr_reader :name, :losses
 
     def initialize(name)
         @name = name
+        @losses = 0
+        @ghost = ["G", "H", "O", "S", "T"]
 
     end
 
-    def guess(fragment)
-        puts "#{@name} enter a letter to extend the word:"
-        response = gets.chomp
-        while !validPlay?(fragment + response)
-            puts "Your letter didn't create a valid word, try again: "
-            response = gets.chomp
+    def lost?
+        if @losses == 5
+            return true
+        else
+            return false
         end
-        return response
     end
 
+    def addLossPoint
+        @losses += 1
+    end
+
+    def printGhost
+        newString = ""
+        (0...@losses).each do |i|
+            newString += @ghost[i]
+        end
+        newString
+    end
 
 end
