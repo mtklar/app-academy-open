@@ -6,7 +6,6 @@ class Player
         @name = name
         @losses = 0
         @ghost = ["G", "H", "O", "S", "T"]
-
     end
 
     def lost?
