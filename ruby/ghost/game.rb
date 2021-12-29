@@ -32,17 +32,12 @@ class Game
     def guess
         puts "#{@currentPlayer.name} enter a letter to extend the word:"
         response = gets.chomp
-        while !validPlay?(@fragment + response)
-            puts
-            puts "Your letter didn't create a valid word, try again: "
-            response = gets.chomp
-        end
         puts
         return response
     end
 
     def validPlay?(string)
-        @dictionary.any? { |word| word.include?(string) }
+        @dictionary.any? { |word| word.start_with?(string) }
     end
 
     def currentPlayer
@@ -72,6 +67,18 @@ class Game
 
     def playRound
         @fragment += guess
+        if !validPlay?(@fragment)
+            puts "#{@currentPlayer.name} you tried to extend the word with a letter which doesn't create a full word, you lose!"
+            @currentPlayer.addLossPoint
+            if @currentPlayer.lost?
+                puts "#{@currentPlayer.name} you are a GHOST! And have been eliminated."
+                @players.delete(@currentPlayer)
+            end
+            puts
+            printPoints
+            @fragment = ""
+            return true
+        end
         puts "Current word fragment is: #{@fragment.capitalize}"
         if @dictionary.include?(@fragment)
             puts "#{@currentPlayer.name} you created a full word and you lose 1 point!"
@@ -95,7 +102,7 @@ class Game
             self.playRound
         end
         puts
-        puts "#{@players[0]} CONGRATULATIONS, YOU WON!"
+        puts "#{@players[0].name} CONGRATULATIONS, YOU WON!"
     end
 
 end
