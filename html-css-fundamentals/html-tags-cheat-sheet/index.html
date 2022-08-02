@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML Tags Cheat Sheet</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1 id="top-of-page">HTML Tags Cheat Sheet</h1>
+
+      <h2>Headings</h2>
+      <p>
+        Headings from `h1` to `h6` identify blocks and sections. Every page
+        should only have 1 `h1` element
+      </p>
+
+      <h2>Paragraphs</h2>
+      <p>Paragraphs of text go in `p` tags</p>
+
+      <h2>Lists</h2>
+      <h3>Unordered Lists</h3>
+      <p>
+        Unordered lists are marked with bullet points and go in `ul` tags. Each
+        list item goes in an `li` tag
+      </p>
+      <h4>Types of lists:</h4>
+      <ul>
+        <li>Unordered lists `ul`</li>
+        <li>Ordered lists `ol`</li>
+      </ul>
+
+      <h3>Ordered Lists</h3>
+      <p>
+        Ordered lists are numbered and go in `ol` tags. Each list item goes in
+        `li` tags.
+      </p>
+      <h4>Polya's Problem Solving Framework</h4>
+      <ol>
+        <li>Understand the problem</li>
+        <li>Come up with a plan</li>
+        <li>Carry out your plan</li>
+        <li>Go back and improve your solution</li>
+      </ol>
+
+      <h2>Anchors (links)</h2>
+      <p>
+        Anchor tags create links to other pages. The URL goes in the `href`
+        attribute
+        <a href="https://duckduckgo.com"
+          >Go to DuckDuckGo to search for more information</a
+        >
+      </p>
+      <p>
+        Setting `target="_blank"` will open the link in a new window See
+        <a href="https://mozilla.org" target="_blank">MDN</a> for more details.
+      </p>
+
+      <p>
+        Anchor tags can also create links to a new location on the same page by
+        referencing the id tag
+        <a href="#top-of-the-page">Jump to the top of the page.</a>
+      </p>
+
+      <h2>Text Emphasis</h2>
+      <h3>Italic</h3>
+      <em>The `em` element adds extra emphasis to the text within it</em>
+      <h3>Bold</h3>
+      <strong>You can also use the `strong` element to emphasize text.</strong>
+
+      <h2>Organizing content with `div` and `span`</h2>
+      <h3>`div`</h3>
+      <p>
+        The `div` element is a block element, so each `div` will show up on a
+        new line
+      </p>
+      <div>Div 1</div>
+      <div>Div 2</div>
+      <div>Div 3</div>
+      <h3>`span`</h3>
+      <p>
+        The `span` element is an inline element, so each `span` will show up on
+        the same line
+      </p>
+      <span>Span 1</span>
+      <span>Span 2</span>
+      <span>Span 3</span>
+      <h2>Breaking text using the `br` tag</h2>
+      <p>
+        They wanted me to create a haiku<br />
+        About the br tag in html<br />
+        But honestly, I'm not a poet<br />
+      </p>
+    </div>
+  </body>
+</html>
