@@ -10,8 +10,19 @@ flatten([1, 2]); // [1, 2]
 flatten([1, [2, [3]]]); // [1, 2, 3]
 ***********************************************************************/
 
-// your code here
-  
+function flatten(arr) {
+  if (arr.length === 0) {
+    return [];
+  }
+
+  if (Array.isArray(arr[0])) {
+    return flatten(arr[0]).concat(flatten(arr.slice(1)));
+  } else {
+    return [arr[0]].concat(flatten(arr.slice(1)));
+  }
+}
+
+console.log(flatten([1, [2, [3]]]));
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
   module.exports = flatten;

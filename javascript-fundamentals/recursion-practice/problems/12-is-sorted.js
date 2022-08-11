@@ -10,7 +10,19 @@ isSorted([2, 4, 6, 7, 8]); // true
 isSorted([5, 4, 3, 2, 1]); // false
 ***********************************************************************/
 
-// your code here
+function isSorted(arr) {
+  if (arr.length === 1) {
+    return true;
+  }
+
+  if (arr[0] > arr[1]) {
+    return false;
+  }
+
+  return isSorted(arr.splice(1));
+}
+
+console.log(isSorted([1, 2, 3, 4, 5]));
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {

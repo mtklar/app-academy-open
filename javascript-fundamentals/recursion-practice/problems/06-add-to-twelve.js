@@ -12,7 +12,17 @@ addToTwelve([1, 12, 4, 7, 6]); // false
 addToTwelve([1]); // false
 ***********************************************************************/
 
-// your code here
+function addToTwelve(arr) {
+  if (arr.length < 2) {
+    return false;
+  }
+
+  if (arr[arr.length - 1] + arr[arr.length - 2] === 12) {
+    return true;
+  }
+
+  return addToTwelve(arr.splice(0, arr.length - 1));
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
