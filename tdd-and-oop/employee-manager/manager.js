@@ -13,23 +13,25 @@ class Manager extends Employee {
   calculateBonus(multiplier) {
     let sum = 0;
     for (let i = 0; i < this.employees.length; i++) {
-      let employee = this.employees[i];
-      if (employee instanceof Manager) {
-        sum += this._totalSubSalary(employee);
+      if (this.employees[i] instanceof Manager) {
+        sum += this.employees[i].salary;
+        sum += this.employees[i]._totalSubSalary();
+      } else {
+        sum += this.employees[i].salary;
       }
     }
-    return sum * multiplier;
+    return (this.salary + sum) * multiplier;
   }
 
-  _totalSubSalary(employee) {
+  _totalSubSalary() {
+    // resursively calculate the total salary of all employees under this manager and then other managers
     let sum = 0;
-    // recursive function to get the total salary of all employees under this manager
-    for (let i = 0; i < employee.employees.length; i++) {
-      let subEmployee = employee.employees[i];
-      if (subEmployee instanceof Employee) {
-        sum += subEmployee.salary;
-      } else if (subEmployee instanceof Manager) {
-        sum += this._totalSubSalary(subEmployee);
+    for (let i = 0; i < this.employees.length; i++) {
+      if (this.employees[i] instanceof Manager) {
+        sum += this.employees[i].salary;
+        sum += this.employees[i]._totalSubSalary();
+      } else {
+        sum += this.employees[i].salary;
       }
     }
     return sum;
@@ -42,7 +44,4 @@ const raph = new Manager("Raphael", 90000, "Ninja", leo);
 const mikey = new Employee("Michelangelo", 85000, "Grasshopper", raph);
 const donnie = new Employee("Donatello", 85000, "Grasshopper", raph);
 
-console.log(splinter.calculateBonus(0.05)); // => 22500
-//console.log(leo.calculateBonus(0.05)); // => 17500
-//console.log(raph.calculateBonus(0.05)); // => 13000
 module.exports = Manager;
