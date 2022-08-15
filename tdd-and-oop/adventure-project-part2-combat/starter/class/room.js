@@ -6,6 +6,11 @@ class Room {
     this.items = [];
   }
 
+  getEnemies() {
+    const { World } = require("./world");
+    return World.getEnemiesInRoom(this);
+  }
+
   printRoom() {
     console.clear();
     console.log("");
@@ -13,6 +18,13 @@ class Room {
     console.log("");
     console.log(this.description);
     console.log("");
+    if (this.getEnemies().length > 0) {
+      console.log(
+        `Enemies: ${this.getEnemies()
+          .map((enemy) => enemy.name)
+          .join(", ")}`
+      );
+    }
     if (this.items.length > 0) {
       console.log(`Items: ${this.items.map((item) => item.name).join(", ")}`);
     }
@@ -43,11 +55,16 @@ class Room {
 
   getItemByName(name) {
     for (let i = 0; i < this.items.length; i++) {
-      if (this.items[i].name === name) {
-        return this.items.splice(i, 1);
+      let currentItem = this.items[i];
+      if (currentItem.name === name) {
+        return currentItem;
       }
     }
-    return null;
+    return false;
+  }
+
+  getEnemyByName(name) {
+    // Fill this in
   }
 }
 
