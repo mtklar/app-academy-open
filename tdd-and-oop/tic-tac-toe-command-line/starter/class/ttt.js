@@ -22,14 +22,17 @@ class TTT {
     Screen.addCommand("s", "down", this.cursor.down);
     Screen.addCommand("a", "left", this.cursor.left);
     Screen.addCommand("d", "right", this.cursor.right);
-    Screen.addCommand("return", "makeMove", () =>
-      TTT.makeMove(this.grid, this.cursor.row, this.cursor.col, this.playerTurn)
-    );
+    Screen.addCommand("return", "makeMove", TTT.makeMove.bind(this));
 
     Screen.render();
   }
 
-  static makeMove(grid, row, col, player) {
+  static makeMove() {
+    const row = this.cursor.row;
+    const col = this.cursor.col;
+    const grid = this.grid;
+    const player = this.playerTurn;
+
     Screen.setMessage(
       `Grid: ${grid}, Row: ${row}, Col: ${col}, Player: ${player}`
     );
@@ -42,10 +45,11 @@ class TTT {
       Screen.render();
     }
 
-    TTT.switchPlayer(this.playerTurn);
+    // switch player turn
+    TTT.playerTurn = player === "O" ? "X" : "O";
 
-    if (this.checkWin(grid)) {
-      this.endGame(this.checkWin(grid));
+    if (TTT.checkWin(grid)) {
+      TTT.endGame(TTT.checkWin(grid));
     }
   }
 
