@@ -10,7 +10,7 @@ Run `npm install` to install any dependencies.
 
 ## Phase 1: `Car`
 
-Implement the following in the __problems/01-car-drive.js__ file.
+Implement the following in the **problems/01-car-drive.js** file.
 
 1. Create a `Car` class.
 2. A newly instantiated instance should have its `speed` property initialized to
@@ -20,7 +20,7 @@ Implement the following in the __problems/01-car-drive.js__ file.
    present `speed` of the instance.
 
 Test your implementation by running the test specs in the
-__test/01-car-drive-spec.js__ file. Run the specs with the following command:
+**test/01-car-drive-spec.js** file. Run the specs with the following command:
 
 ```shell
 npm test test/01-car-drive-spec.js
@@ -33,22 +33,22 @@ Examples:
 
 ```js
 let car = new Car();
-car.drive(0);     // => returns 0
+car.drive(0); // => returns 0
 console.log(car); // => { speed: 0 }
 
-car.drive(10);    // => returns 10
+car.drive(10); // => returns 10
 console.log(car); // => { speed: 10 }
 
-car.drive(50);    // => returns 50
+car.drive(50); // => returns 50
 console.log(car); // -> { speed: 50 }
 
-car.drive(100);   // => returns 100
+car.drive(100); // => returns 100
 console.log(car); // -> { speed: 100 }
 ```
 
 ## Phase 2: `Calculator`
 
-Implement the following in the __problems/02-calculator.js__ file.
+Implement the following in the **problems/02-calculator.js** file.
 
 1. Create a `Calculator` class.
 2. A newly instantiated instance should have its `total` property initialized to
@@ -61,7 +61,7 @@ Implement the following in the __problems/02-calculator.js__ file.
    d. `multiply(num)` - multiply the `total` by the `num` arg
 
 Test your implementation by running the test specs in the
-__test/02-calculator-spec.js__ file. Run the specs with the following command:
+**test/02-calculator-spec.js** file. Run the specs with the following command:
 
 ```shell
 npm test test/02-calculator-spec.js
@@ -74,16 +74,16 @@ Examples:
 
 ```js
 let calculator = new Calculator();
-console.log(calculator.add(50));      // => 50
+console.log(calculator.add(50)); // => 50
 console.log(calculator.subtract(35)); // => 15
 console.log(calculator.multiply(10)); // => 150
-console.log(calculator.divide(5));    // => 30
-console.log(calculator.total)         // => 30
+console.log(calculator.divide(5)); // => 30
+console.log(calculator.total); // => 30
 ```
 
 ## Phase 3: `Dog`
 
-Implement the following in the __problems/03-make-dog.js__ file.
+Implement the following in the **problems/03-make-dog.js** file.
 
 1. Create a `Dog` class.
 2. The `constructor` function should take in a `name` argument and set the
@@ -95,7 +95,7 @@ Implement the following in the __problems/03-make-dog.js__ file.
    b. `speak(word)` - returns `${name} says ${word}`
 
 Test your implementation by running the test specs in the
-__test/03-make-dog-spec.js__ file. Run the specs with the following command:
+**test/03-make-dog-spec.js** file. Run the specs with the following command:
 
 ```shell
 npm test test/03-make-dog-spec.js
@@ -109,26 +109,26 @@ Examples:
 ```js
 let dog1 = Dog.makeJet(); // returns an object
 
-console.log(dog1.name);                 // Jet
-console.log(dog1.speak("hello"));       // Jet says hello
+console.log(dog1.name); // Jet
+console.log(dog1.speak("hello")); // Jet says hello
 console.log(dog1.changeName("Freyja")); // Freyja
-console.log(dog1.name);                 // Freyja
-console.log(dog1.speak("hello"));       // Freyja says hello
+console.log(dog1.name); // Freyja
+console.log(dog1.speak("hello")); // Freyja says hello
 
 let dog2 = Dog.makeJet();
-console.log(dog2.name);                 // Jet
+console.log(dog2.name); // Jet
 ```
 
 ## Phase 4: `changeContext(func, obj)`
 
-Implement the following in the __problems/04-change-context.js__ file.
+Implement the following in the **problems/04-change-context.js** file.
 
 Write a function named `changeContext(func, obj)` that will accept a
 function `func` and an object `obj`. The `changeContext` function should return
 the result of the function `func` invoked with the object `obj` as its context.
 
 Test your implementation by running the test specs in the
-__test/04-change-context-spec.js__ file. Run the specs with the following command:
+**test/04-change-context-spec.js** file. Run the specs with the following command:
 
 ```shell
 npm test test/04-change-context-spec.js
@@ -150,13 +150,13 @@ function extractName() {
   return this.name;
 }
 
-const kristen = new Person('Kristen');
+const kristen = new Person("Kristen");
 console.log(changeContext(extractName, kristen)); // => Kristen
 ```
 
 ## Phase 5: `bindToAnArg(func, arg)`
 
-Implement the following in the __problems/05-bind-to-an-arg.js__ file.
+Implement the following in the **problems/05-bind-to-an-arg.js** file.
 
 Write a function named `bindToAnArg(func, arg)` that will accept a
 function `func` and any argument `arg`. The `bindToAnArg` function should return
@@ -164,11 +164,11 @@ the passed-in function `func` modified to always be invoked with the passed-in
 argument `arg`.
 
 Test your implementation by running the test specs in the
-__test/05-bind-to-an-arg-spec.js__ file. Run the specs with the following
+**test/05-bind-to-an-arg-spec.js** file. Run the specs with the following
 command:
 
 ```shell
-npm test test/05-bind-to-an-arg-spec.js
+npm test test/04-change-context-spec.js
 ```
 
 In addition to Mocha, you should test your code manually using Node.js. You can
@@ -189,10 +189,10 @@ const twoPlusSeven = addTwo(7);
 const threePlusSeven = addThree(7);
 const threePlusEight = addThree(8);
 console.log({
-  twoPlusSix,     // => 8
-  twoPlusSeven,   // => 9
+  twoPlusSix, // => 8
+  twoPlusSeven, // => 9
   threePlusSeven, // => 10
-  threePlusEight  // => 11
+  threePlusEight, // => 11
 });
 ```
 
@@ -202,17 +202,17 @@ function iSpy(thing) {
 }
 
 let spyTree = bindToAnArg(iSpy, "tree");
-console.log(spyTree());        // => I spy a tree
-console.log(spyTree("car"));   // => I spy a tree
+console.log(spyTree()); // => I spy a tree
+console.log(spyTree("car")); // => I spy a tree
 
 let spyCar = bindToAnArg(iSpy, "car");
-console.log(spyCar());         // => I spy a car
+console.log(spyCar()); // => I spy a car
 console.log(spyCar("potato")); // => I spy a car
 ```
 
 ## Phase 6: `FancyCalculator`
 
-Implement the following in the __problems/06-fancy-calculator.js__ file.
+Implement the following in the **problems/06-fancy-calculator.js** file.
 
 1. Import the `Calculator` class.
 2. Create a `FancyCalculator` class with the `Calculator` class as its parent
@@ -224,7 +224,7 @@ Implement the following in the __problems/06-fancy-calculator.js__ file.
    c. `squared()` - multiplies the `total` by the `total`
 
 Test your implementation by running the test specs in the
-__test/06-fancy-calculator-spec.js__ file. Run the specs with the following
+**test/06-fancy-calculator-spec.js** file. Run the specs with the following
 command:
 
 ```shell
@@ -239,17 +239,17 @@ Examples:
 ```js
 let fancyCalculator = new FancyCalculator();
 console.log(fancyCalculator.setTotal(5)); // => 5
-console.log(fancyCalculator.squared());   // => 25
-console.log(fancyCalculator.modulo(4));   // => 1
-console.log(fancyCalculator.total)        // => 1
+console.log(fancyCalculator.squared()); // => 25
+console.log(fancyCalculator.modulo(4)); // => 1
+console.log(fancyCalculator.total); // => 1
 
 // can use instance methods on the Calculator class
-console.log(fancyCalculator.add(9))       // => 10
+console.log(fancyCalculator.add(9)); // => 10
 ```
 
 ## Phase 7: `allTheArgs(func, ...args)`
 
-Implement the following in the __problems/07-all-the-args.js__ file.
+Implement the following in the **problems/07-all-the-args.js** file.
 
 Write a function named `allTheArgs(func, ...args)` that will accept a
 function `func` and any number of arguments. Then return the string
@@ -258,7 +258,7 @@ should return the passed-in function `func` modified to always be invoked with
 the passed-in arguments `args`. See code block below for further details.
 
 Test your implementation by running the test specs in the
-__test/07-all-the-args-spec.js__ file. Run the specs with the following
+**test/07-all-the-args-spec.js** file. Run the specs with the following
 command:
 
 ```shell
@@ -279,7 +279,7 @@ const onePlusTwoPlusThree = onePlusTwo(3);
 const onePlusTwoPlusFour = onePlusTwo(4);
 
 console.log(onePlusTwoPlusThree); // => 6
-console.log(onePlusTwoPlusFour);  // => 7
+console.log(onePlusTwoPlusFour); // => 7
 ```
 
 ```js
@@ -287,7 +287,7 @@ const bow = (...names) => {
   return "You bowed to " + names.join(" and ");
 };
 
-console.log(bow("Sandy")) // prints "You bowed to Sandy"
+console.log(bow("Sandy")); // prints "You bowed to Sandy"
 
 let bowSandy = allTheArgs(bow, "Sandy");
 console.log(bowSandy()); // prints "You bowed to Sandy"
@@ -296,7 +296,7 @@ console.log(bowSandy("Joe", "Nico")); // prints "You bowed to Sandy and Joe and 
 
 ## Phase 8: `CallCenter`
 
-Implement the following in the __problems/08-call-me-later.js__ file.
+Implement the following in the **problems/08-call-me-later.js** file.
 
 1. Create a `CallCenter` class.
 2. The `constructor` function should take in a `name` argument and set the
@@ -304,14 +304,14 @@ Implement the following in the __problems/08-call-me-later.js__ file.
 3. Add two instance methods:
    a. `sayHello()` - prints `Hello this is ${name}`
    b. `callMeLater(delay)` - takes in a `delay` in milliseconds that will call
-      the `sayHello()` method on the instance after the `delay`. The context
-      of the `sayHello()` method when invoked needs to be the `CallCenter`
-      instance that the method was called on.
+   the `sayHello()` method on the instance after the `delay`. The context
+   of the `sayHello()` method when invoked needs to be the `CallCenter`
+   instance that the method was called on.
 
 **You CANNOT use `bind`, `call`, or `apply` for this phase!**
 
 Test your implementation by running the test specs in the
-__test/08-call-me-later-spec.js__ file. Run the specs with the following
+**test/08-call-me-later-spec.js** file. Run the specs with the following
 command:
 
 ```shell
@@ -325,21 +325,21 @@ Example 1:
 
 ```js
 let judy = new CallCenter("Judy");
-judy.sayHello();         // prints "Hello this is Judy"
-judy.callMeLater(1000);  // waits one second then prints "Hello this is Judy"
+judy.sayHello(); // prints "Hello this is Judy"
+judy.callMeLater(1000); // waits one second then prints "Hello this is Judy"
 ```
 
 Example 2:
 
 ```js
 let melan = new CallCenter("Melan");
-melan.sayHello();        // prints "Hello this is Melan"
+melan.sayHello(); // prints "Hello this is Melan"
 melan.callMeLater(1000); // waits one second then prints "Hello this is Melan"
 ```
 
 ## Phase 9: `callOnTarget(func, obj1, obj2)`
 
-Implement the following in the __problems/09-call-on-target.js__ file.
+Implement the following in the **problems/09-call-on-target.js** file.
 
 Write a function named `callOnTarget(func, obj1, obj2)` that will accept a
 function `func` and two objects, `obj1` and `obj2`. `callOnTarget` should return
@@ -347,7 +347,7 @@ the result of the function `func` invoked with `obj1` as its context and `obj2`
 as the first argument.
 
 Test your implementation by running the test specs in the
-__test/09-call-on-target-spec.js__ file. Run the specs with the following
+**test/09-call-on-target-spec.js** file. Run the specs with the following
 command:
 
 ```shell
@@ -361,11 +361,11 @@ Examples:
 
 ```js
 const cat = {
-  name: "Breakfast"
+  name: "Breakfast",
 };
 
 const mouse = {
-  name: "Jerry"
+  name: "Jerry",
 };
 
 function greet(other) {
@@ -380,9 +380,9 @@ console.log(callOnTarget(greet, mouse, cat));
 
 const dog = {
   name: "Noodles",
-  chase: function(animal) {
+  chase: function (animal) {
     return "Woof, my name is " + this.name + " and I'm chasing " + animal.name;
-  }
+  },
 };
 
 console.log(callOnTarget(dog.chase, cat, dog));
@@ -391,7 +391,7 @@ console.log(callOnTarget(dog.chase, cat, dog));
 
 ## Phase 10: `PartyPlanner`
 
-Implement the following in the __problems/10-party-planner.js__ file.
+Implement the following in the **problems/10-party-planner.js** file.
 
 1. Create a `PartyPlanner` class.
 2. A newly instantiated instance should have its `guestList` property
@@ -399,14 +399,14 @@ Implement the following in the __problems/10-party-planner.js__ file.
 3. Add two instance methods:
    a. `addToGuestList(name)` - add the `name` to the `guestList`
    b. `throwParty()` - return a different string depending on the length of the
-      `guestList`:
-      * If there are no guests, return "Gotta add people to the guest list"
-      * If there are guests in the `guestList`, return the guests' names. For
-        example, if there are two guests, return "Welcome to the party
-        ${name1} and ${name2}".
+   `guestList`:
+   - If there are no guests, return "Gotta add people to the guest list"
+   - If there are guests in the `guestList`, return the guests' names. For
+     example, if there are two guests, return "Welcome to the party
+     ${name1} and ${name2}".
 
 Test your implementation by running the test specs in the
-__test/10-party-planner-spec.js__ file. Run the specs with the following
+**test/10-party-planner-spec.js** file. Run the specs with the following
 command:
 
 ```shell
@@ -442,7 +442,7 @@ console.log(party2.throwParty()); // prints "Welcome to the party Lucy"
 
 ## Phase 11: `boundFuncTimer(obj, func, delay)`
 
-Implement the following in the __problems/11-bind-set-timeout.js__ file.
+Implement the following in the **problems/11-bind-set-timeout.js** file.
 
 Write a function named `boundFuncTimer(obj, func, delay)` that will accept am
 object `obj`, a function `func`, and `delay` which is a number representing
@@ -450,7 +450,7 @@ milliseconds. The `boundFuncTimer` should invoke the function `func` with `obj`
 as its context after a `delay`.
 
 Test your implementation by running the test specs in the
-__test/11-bind-set-timeout-spec.js__ file. Run the specs with the following
+**test/11-bind-set-timeout-spec.js** file. Run the specs with the following
 command:
 
 ```shell
