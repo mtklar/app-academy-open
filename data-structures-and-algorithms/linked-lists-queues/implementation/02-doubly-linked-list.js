@@ -15,10 +15,6 @@ class DoublyLinkedList {
   }
 
   addToHead(val) {
-    // There are bugs in this method! Fix them!!!
-    // Write your hypothesis on the time complexity of this method here
-
-    // Add node of val to head of linked list
     let newNode = new DoublyLinkedNode(val);
 
     if (this.length > 0) {
@@ -34,7 +30,6 @@ class DoublyLinkedList {
   }
 
   addToTail(val) {
-    // Add node of val to tail of linked list
     let newNode = new DoublyLinkedNode(val);
     if (this.length > 0) {
       this.tail.next = newNode;
@@ -45,8 +40,6 @@ class DoublyLinkedList {
       this.tail = newNode;
     }
     this.length++;
-
-    // Write your hypothesis on the time complexity of this method here
   }
 
   removeFromHead() {
