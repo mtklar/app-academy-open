@@ -1,0 +1,39 @@
+/* Your code here */
+.interests-bar {
+  display: flex;
+  border-top: solid 1px black;
+  border-bottom: solid 1px black;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.interests-bar img {
+  align-self: center;
+  height: 75px;
+  width: 75px;
+}
+
+.interests-bar__card {
+  display: flex;
+  gap: 1rem;
+  border-right: 1px solid #e2e2e2;
+  flex: 1;
+}
+
+.interests-bar__card-inner > h4 {
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+.interests-bar__list {
+  display: flex;
+  flex-direction: column;
+  width: 125px;
+  gap: 1rem;
+  padding-right: 1rem;
+  border-right: 1px solid #e2e2e2;
+}
+
+.green {
+  color: green;
+}

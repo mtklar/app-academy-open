@@ -1,0 +1,78 @@
+/* Your code here */
+.masthead {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.masthead__menu-and-search {
+  grid-column-start: span 2;
+  align-self: center;
+  display: flex;
+  padding-left: 20px;
+  padding: 0.5rem;
+}
+
+.masthead__actions {
+  justify-self: end;
+  align-self: center;
+  display: flex;
+}
+
+.masthead__technologies {
+  grid-column-start: span 3;
+
+  border-bottom: solid 1px #e2e2e2;
+  align-self: center;
+
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.masthead__date {
+  display: flex;
+  align-self: flex-end;
+  border-bottom: solid 1px #e2e2e2;
+  padding-bottom: 11px;
+}
+
+.masthead__logo {
+  border-bottom: solid 1px #e2e2e2;
+  padding-bottom: 11px;
+  padding-top: 1rem;
+}
+
+.masthead__paper {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  width: 100%;
+  border-bottom: solid 1px #e2e2e2;
+  padding-bottom: 11px;
+}
+
+.masthead__button {
+  padding: 7px 9px;
+}
+
+.masthead__button:hover {
+  cursor: pointer;
+  background-color: #f7f7f5;
+}
+
+.masthead__technologies-span {
+  margin: 0 1rem;
+}
+
+.masthead__technologies-inner {
+  position: relative;
+  top: 1px;
+  border-top: solid 1px #e2e2e2;
+  border-right: solid 1px #e2e2e2;
+  border-left: solid 1px #e2e2e2;
+  border-bottom: solid 1px white;
+  background-color: white;
+  padding: 0.5rem;
+}

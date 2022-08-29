@@ -1,0 +1,50 @@
+/* Your code here */
+main {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+}
+
+main h5 {
+  color: #999;
+  font-weight: 400;
+}
+
+main h2 {
+  font-size: 2rem;
+}
+
+.main__left {
+  display: grid;
+  grid-column-start: span 1;
+  gap: 1rem;
+  grid-template-columns: 1fr 1.5fr;
+}
+
+.main__left-title {
+  grid-column-start: span 2;
+  font-size: 2.5rem;
+  line-height: 2.5rem;
+}
+
+.main__right {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.main__right-gridthing {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.main__right-gridthing h4 {
+  margin: 0.25rem;
+}
+
+.main__right-gridthing h5 {
+  margin: 0.25rem;
+}

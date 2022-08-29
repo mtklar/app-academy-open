@@ -1,0 +1,7 @@
+/* Your code here */
+.masthead__nav-list {
+  display: flex;
+  padding: 1rem;
+  gap: 1rem;
+  justify-content: center;
+}
