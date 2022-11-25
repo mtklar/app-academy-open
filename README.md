@@ -1,2 +1,2 @@
 # AppAcademyOpen
-Exercises for App Academy Open
+Solutions for App Academy Open
